@@ -25,17 +25,19 @@
       height: 100%;
     }
     #chatbot-popup {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      width: var(--chat-width);
-      height: var(--chat-height);
-      background: white;
-      border-radius: var(--border-radius);
-      box-shadow: none;
-      overflow: hidden;
-      z-index: 999;
-    }
+  position: fixed;
+  top: 50%;                /* move to middle vertically */
+  left: 50%;               /* move to middle horizontally */
+  transform: translate(-50%, -50%); /* center the box */
+  width: 400px;             /* fixed width */
+  height: 600px;            /* fixed height */
+  background: white;
+  border-radius: 8px;       /* optional rounded corners */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* optional shadow */
+  overflow: hidden;
+  z-index: 999;
+}
+
     #chatbot-header {
       background: var(--primary-color);
       padding: 12px;
@@ -46,9 +48,12 @@
       height: var(--header-height);
     }
     #webchat {
-      height: calc(100% - var(--header-height));
-      background-color: #f9fafb;
-    }
+  height: calc(100% - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30%;   /* 👈 moves the typing box up */
+  box-sizing: border-box;
+}
     button {
       background: none;
       border: none;
@@ -76,7 +81,6 @@
       <span>Assistant</span>
       <div>
         <button onclick="restartConversation()">⟳</button>
-        <button onclick="hideChat()">✕</button>
       </div>
     </div>
     <div id="webchat" role="main"></div>
@@ -175,4 +179,3 @@
   </script>
 </body>
 </html>
-
